@@ -372,19 +372,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    # bch = galois.BCH(7, 4)
-    # print(bch.G)
-    # print(bch.generator_poly)
-    # GF = galois.GF(2 ** 3)
-    # print(GF.primitive_elements)
-    # print(GF.repr_table())
-    # for i in [2, 4, 3, 6, 7, 5]:
-    #     print(GF(i).minimal_poly())
-    # fpath = Path(mpl.get_data_path(), '/Users/xxxx/Desktop/Workplace/Code/arial/arial.ttf')
-    # plt.bar(["Analog Memory\nWith Cap", "Traditional CIM", "Ours"], [5.05 / 27.66, 5.05 / 2.99, 5.05])
-    # plt.semilogy()
-    # plt.yticks(fontproperties='Arial')
-    # plt.xticks(fontproperties='Arial')
-    # # plt.savefig("Buffer.pdf")
-    # print([5.05 / 27.66, 5.05 / 2.99, 5.05])
-    # plt.show()

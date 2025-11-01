@@ -55,16 +55,6 @@ def Systolic(InputChannel, OutputChannel, WeightBit, InputBit):
     # return PE_BUF * ParallelismX * ParallelismY + InputBuf + OutputBuf
 
 
-# def Systolic(InputChannel, OutputChannel, WeightBit, InputBit):  # no hardware reuse(adder tree)
-#     ParallelismX = min(96, InputChannel)
-#     ParallelismY = min(96, OutputChannel)
-#     PartialSum =  WeightBit + InputBit + np.ceil(np.log2(ParallelismX))
-#     PE_BUF = WeightBit + InputBit + PartialSum
-#     InputBuf = InputChannel * InputBit + InputChannel * OutputChannel * WeightBit
-#     OutputBuf = (PartialSum + np.ceil(np.log2(ParallelismY))) * np.ceil(OutputChannel / ParallelismY) + (PartialSum + np.ceil(np.log2(InputChannel)))
-#     return PE_BUF * ParallelismX * ParallelismY + InputBuf + OutputBuf
-
-
 def survey(results, category_names):
     """
     Parameters
