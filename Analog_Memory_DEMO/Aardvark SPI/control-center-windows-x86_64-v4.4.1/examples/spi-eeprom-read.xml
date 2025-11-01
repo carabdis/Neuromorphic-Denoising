@@ -1,0 +1,21 @@
+<adapter>
+  <configure i2c="1" spi="1" gpio="0" tpower="1" pullups="0"/>
+  <spi_bitrate khz="1000"/>
+  <spi_config polarity="rising/falling" phase="sample/setup" bitorder="msb" ss="active_low"/>
+
+  <spi_write ss="0" count="67" radix="16">
+    03 00 00
+  </spi_write>
+
+  <spi_write ss="0" count="67" radix="16">
+    03 00 40
+  </spi_write>
+
+  <spi_write ss="0" count="67" radix="16">
+    03 00 80
+  </spi_write>
+
+  <spi_write ss="0" count="67" radix="16">
+    03 00 C0
+  </spi_write>
+</adapter>

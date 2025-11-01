@@ -1,0 +1,59 @@
+loss2: tensor(4583.3516, grad_fn=<AddBackward0>) tensor(6457.7866)
+
+loss1: tensor(3075.2993, grad_fn=<AddBackward0>) tensor(4092.1855)
+loss2: tensor(2878.4973, grad_fn=<AddBackward0>) tensor(5327.9927)
+loss3: tensor(3195.3872, grad_fn=<AddBackward0>) tensor(3564.9749)
+loss4: tensor(3020.1934, grad_fn=<AddBackward0>) tensor(2865.4031)
+loss5: tensor(2912.4709, grad_fn=<AddBackward0>) tensor(3502.6064)
+loss6: tensor(3015.0107, grad_fn=<AddBackward0>) tensor(2815.2805)
+loss7: tensor(3017.1868, grad_fn=<AddBackward0>) tensor(3225.5444)
+loss8: tensor(3070.2454, grad_fn=<AddBackward0>) tensor(2934.4111)
+loss9: tensor(3192.0056, grad_fn=<AddBackward0>) tensor(4212.5117)
+loss10: tensor(2423.3855, grad_fn=<AddBackward0>) tensor(5540.8037)
+loss1: tensor(3074.5007, grad_fn=<AddBackward0>) tensor(3084.5920)
+loss2: tensor(2918.2769, grad_fn=<AddBackward0>) tensor(2954.8096)
+loss1: tensor(3051.5312, grad_fn=<AddBackward0>) tensor(4262.2471)
+loss1: tensor(3180.9875, grad_fn=<AddBackward0>) tensor(3287.4617)
+loss1: tensor(2973.5181, grad_fn=<AddBackward0>) tensor(3274.0430)
+loss1: tensor(2982.3545, grad_fn=<AddBackward0>) tensor(3542.9348)
+loss1: tensor(3126.3777, grad_fn=<AddBackward0>) tensor(5695.2891)
+loss1: tensor(3066.1267, grad_fn=<AddBackward0>) tensor(2986.9246)
+loss1: tensor(3183.8550, grad_fn=<AddBackward0>) tensor(3609.4905)
+loss1: tensor(3068.9016, grad_fn=<AddBackward0>) tensor(3201.6953)
+loss1: tensor(3167.0120, grad_fn=<AddBackward0>) tensor(3807.2017)
+loss1: tensor(3097.5974, grad_fn=<AddBackward0>) tensor(3012.0576)
+loss1: tensor(3183.3772, grad_fn=<AddBackward0>) tensor(3200.6187)
+loss1: tensor(3158.2976, grad_fn=<AddBackward0>) tensor(4766.7461)
+loss1: tensor(3155.1243, grad_fn=<AddBackward0>) tensor(3317.8296)
+loss1: tensor(3193.6494, grad_fn=<AddBackward0>) tensor(3631.3696)
+loss1: tensor(3112.1270, grad_fn=<AddBackward0>) tensor(4066.5298)
+loss1: tensor(3194.1240, grad_fn=<AddBackward0>) tensor(3945.0793)
+loss1: tensor(3143.5579, grad_fn=<AddBackward0>) tensor(3777.9307)
+loss1: tensor(3130.2234, grad_fn=<AddBackward0>) tensor(3149.1816)
+loss1: tensor(3128.0671, grad_fn=<AddBackward0>) tensor(4327.4229)
+loss1: tensor(3166.0452, grad_fn=<AddBackward0>) tensor(3961.5273)
+loss1: tensor(3134.9524, grad_fn=<AddBackward0>) tensor(3110.8464)
+loss1: tensor(3199.7888, grad_fn=<AddBackward0>) tensor(3313.8123)
+loss1: tensor(3021.0737, grad_fn=<AddBackward0>) tensor(4543.7622)
+loss1: tensor(3118.0232, grad_fn=<AddBackward0>) tensor(3429.1931)
+loss1: tensor(3199.6240, grad_fn=<AddBackward0>) tensor(3157.1511)
+loss1: tensor(3063.8967, grad_fn=<AddBackward0>) tensor(3568.5901)
+loss1: tensor(3100.1545, grad_fn=<AddBackward0>) tensor(3140.7314)
+
+
+# figA: 3694.5930 v.s. 3468.4443
+# figB: 3036.1611 v.s. 3408.8677
+# figC: 7557.3286 v.s. 7969.8306
+# figD: 7921.8931 v.s. 7111.6685
+# figE: 4583.3516 v.s. 6457.7866
+# figF: 3075.2993 v.s. 4092.1855
+# figG: 2878.4973 v.s. 5327.9927
+# figH: 3195.3872 v.s. 3564.9749
+# figI: 3020.1934 v.s. 2865.4031
+# figJ: 2912.4709 v.s. 3502.6064
+# figK: 3015.0107 v.s. 2815.2805
+# figL: 3017.1868 v.s. 3225.5444
+# figM: 3070.2454 v.s. 2934.4111
+# figN: 3074.5007 v.s. 3084.5920
+# figO: 2918.2769 v.s. 2954.8096
+

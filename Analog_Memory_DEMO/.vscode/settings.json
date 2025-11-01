@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./aardvark-api-windows-x86_64-v5.70/python"
+    ]
+}

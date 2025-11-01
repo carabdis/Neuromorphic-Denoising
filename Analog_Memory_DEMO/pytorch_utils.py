@@ -1,0 +1,133 @@
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.model_selection import train_test_split
+import h5py as hpy
+
+dims_dict = {"shapes3d": (64, 64, 3)}
+
+DEFAULT_KEY_DICT = {'shapes3d': 'label_shape'}
+
+
+def get_output_paths(dataset, num, generative_epochs, latent_dim, lr, kl_weighting):
+    base_format = "{}_{}items_{}eps_{}lv_{}lr_{}kl"
+    base = base_format.format(dataset, num, generative_epochs, latent_dim, lr, kl_weighting)
+
+    pdf_path = "./outputs/output_" + base + ".pdf"
+    history_path = "./outputs/history_" + base + ".pkl"
+    decoding_path = "./outputs/decoding_" + base + ".pkl"
+
+    return pdf_path, history_path, decoding_path
+
+
+def preprocess(array):
+    # Normalizes the supplied array and reshapes it into the appropriate format.
+    array = array.astype("float64") / 255.0
+    return array
+
+
+def noise(array, noise_factor=0.4, seed=None, gaussian=False, replacement_val=0):
+    # Replace a fraction noise_factor of pixels with replacement_val or gaussian noise
+    if seed is not None:
+        np.random.seed(seed)
+    shape = array.shape
+    array = array.flatten()
+    indices = np.random.choice(np.arange(array.shape[0]), replace=False,
+                               size=int(array.shape[0] * noise_factor))
+    if gaussian is True:
+        array[indices] = np.random.normal(loc=0.5, scale=1.0, size=array[indices].shape)
+    else:
+        array[indices] = replacement_val
+    array = array.reshape(shape)
+    return np.clip(array, 0.0, 1.0)
+
+
+def display(array1, array2, seed=None, title='Inputs and outputs of the model', n=10, num=0):
+    hopfield = False
+
+    dim = array1[0].shape[0]
+    # Displays ten random images from each one of the supplied arrays.
+    if seed is not None:
+        np.random.seed(seed)
+
+    indices = np.random.randint(len(array1), size=n)
+    images1 = array1[indices, :]
+    print(images1.shape)
+    images2 = array2[indices, :]
+
+    fig = plt.figure(figsize=(12, 6))
+    for i, (image1, image2) in enumerate(zip(images1, images2)):
+        # ax = plt.subplot(2, n, i + 1)
+        ax = plt.subplot(1, 2, i + 1)
+        if hopfield is True:
+            plt.imshow(image1.reshape(dim, dim), cmap='binary', vmin=-1, vmax=1)
+        else:
+            plt.imshow(image1.reshape(dim, dim, 3))
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+        # ax = plt.subplot(2, n, i + 1 + n)
+        ax = plt.subplot(1, 2, i + 2)
+        if hopfield is True:
+            plt.imshow(image2.reshape(dim, dim), cmap='binary', vmin=-1, vmax=1)
+        else:
+            plt.imshow(image2.reshape(dim, dim, 3))
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+    # fig.suptitle(title)
+    plt.savefig("./Results/testfig"+ str(num) + ".png")
+    plt.show()
+    return fig
+
+
+def load_tfds_dataset(dataset="shapes3d", num=20, labels=False, key_dict=DEFAULT_KEY_DICT):
+    dataset = hpy.File("./data/3dshapes.h5", "r")
+    dataset_images = dataset["images"]
+    dataset_labels = dataset["labels"]
+    dataset_size = 480000
+    group_num = min(100, num)
+    group_size = int(np.ceil(num / group_num))
+    data = []
+    data_labels = []
+    for i in range(group_num):
+        start_point = np.random.randint(dataset_size - group_size)
+        data.append(dataset_images[start_point:start_point + group_size, :, :, :])
+        data_labels.append(dataset_labels[start_point:start_point + group_size, :])
+        if i % 50 == 0:
+            print(i)
+    data = np.vstack(data)
+    data_labels = np.vstack(data_labels)
+    train_data, test_data, train_labels, test_labels = train_test_split(data, data_labels, test_size=0.1,
+                                                                        random_state=42)
+
+    train_data = np.array(train_data).reshape(len(train_data), 64, 64, 3)
+    test_data = np.array(test_data).reshape(len(test_data), 64, 64, 3)
+
+    if labels:
+        return train_data, test_data, train_labels, test_labels
+    else:
+        return train_data, test_data
+
+
+def prepare_data(dataset, display=False, noise_factor=0.6, labels=False):
+    if labels is True:
+        train_data, test_data, train_labels, test_labels = load_tfds_dataset(dataset, labels=True)
+    if labels is False:
+        train_data, test_data = load_tfds_dataset(dataset, labels=False)
+
+    # Normalize and reshape the data
+    train_data = preprocess(train_data)
+    test_data = preprocess(test_data)
+
+    # Create a copy of the data with added noise
+    noisy_train_data = noise(train_data, noise_factor=noise_factor)
+    noisy_test_data = noise(test_data, noise_factor=noise_factor)
+
+    # Display the train data and a version of it with added noise
+    if display is True:
+        display(train_data, noisy_train_data)
+
+    if labels is True:
+        return train_data, test_data, noisy_train_data, noisy_test_data, train_labels, test_labels
+    if labels is False:
+        return train_data, test_data, noisy_train_data, noisy_test_data

@@ -1,0 +1,261 @@
+Start training VAE...
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 1 complete! 	Average Loss:  861.5661478603662
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 2 complete! 	Average Loss:  154.4587404952264
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 3 complete! 	Average Loss:  139.87620205224854
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 4 complete! 	Average Loss:  131.881556777572
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 5 complete! 	Average Loss:  126.4536044775146
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 6 complete! 	Average Loss:  122.52044926765964
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 7 complete! 	Average Loss:  119.27629499686978
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 8 complete! 	Average Loss:  116.75011094336915
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 9 complete! 	Average Loss:  114.5785328901033
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 10 complete! 	Average Loss:  112.81813770020347
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 11 complete! 	Average Loss:  111.32563866209307
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 12 complete! 	Average Loss:  110.01368522733202
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 13 complete! 	Average Loss:  108.84340821942821
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 14 complete! 	Average Loss:  107.83344253769303
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 15 complete! 	Average Loss:  106.9545427926753
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 16 complete! 	Average Loss:  106.16722380725689
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 17 complete! 	Average Loss:  105.48059108931552
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 18 complete! 	Average Loss:  104.82094043457846
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 19 complete! 	Average Loss:  104.30148217406615
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 20 complete! 	Average Loss:  103.81304454364044
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 21 complete! 	Average Loss:  103.3187276156876
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 22 complete! 	Average Loss:  102.8819701618583
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 23 complete! 	Average Loss:  102.5217878267164
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 24 complete! 	Average Loss:  102.18281949407867
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 25 complete! 	Average Loss:  101.84472077485914
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 26 complete! 	Average Loss:  101.54177872952316
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 27 complete! 	Average Loss:  101.27092577798936
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 28 complete! 	Average Loss:  101.07397739722454
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 29 complete! 	Average Loss:  100.79267248800083
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 30 complete! 	Average Loss:  100.55344956437813
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 31 complete! 	Average Loss:  100.34168213298206
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 32 complete! 	Average Loss:  100.12326983775041
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 33 complete! 	Average Loss:  100.03580655258764
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 34 complete! 	Average Loss:  99.85782296666319
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 35 complete! 	Average Loss:  99.68950426818134
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 36 complete! 	Average Loss:  99.49612402506781
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 37 complete! 	Average Loss:  99.34251887912146
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 38 complete! 	Average Loss:  99.17740697386269
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 39 complete! 	Average Loss:  99.05368576533806
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 40 complete! 	Average Loss:  98.94346596541111
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 41 complete! 	Average Loss:  98.82687501630322
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 42 complete! 	Average Loss:  98.73103121087229
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 43 complete! 	Average Loss:  98.61489345849854
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 44 complete! 	Average Loss:  98.44116046275042
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 45 complete! 	Average Loss:  98.37963050396495
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 46 complete! 	Average Loss:  98.27186675057388
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 47 complete! 	Average Loss:  98.20437552170284
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 48 complete! 	Average Loss:  98.10386069882095
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 49 complete! 	Average Loss:  98.04305101601628
+/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+	Epoch 50 complete! 	Average Loss:  97.95537143611749
+Finish!!
+  0%|          | 0/100 [00:00<?, ?it/s]/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/io/image.py:13: UserWarning: Failed to load image Python extension: 'dlopen(/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so, 0x0006): Symbol not found: (__ZN3c106detail19maybe_wrap_dim_slowIxEET_S2_S2_b)
+  Referenced from: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torchvision/image.so'
+  Expected in: '/opt/anaconda3/envs/pytorch/lib/python3.8/site-packages/torch/lib/libc10.dylib''If you don't plan on using image functionality from `torchvision.io`, you can ignore this warning. Otherwise, there might be something wrong with your environment. Did you have `libjpeg` or `libpng` installed before building `torchvision` from source?
+  warn(
+  0%|          | 0/100 [00:01<?, ?it/s]
