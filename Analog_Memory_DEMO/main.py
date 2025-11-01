@@ -1189,7 +1189,7 @@ def VAE_DEMO():
     return
 
 def CNN_DEMO():
-    folderOut = 'C:\\Users\\16432\\Desktop\\Workplace\\Python\\cnn_fixpoint\\1D_CNN_dataset'
+    folderOut = './Analog_Memory_DEMO/cnn_fixpoint/1D_CNN_dataset'
     pat_path = folderOut + '/chb' + '02'
     mean_se = np.load(pat_path + "/mean_stat.npy")
     std_se = np.load(pat_path + "/std_stat.npy")
@@ -1205,7 +1205,7 @@ def CNN_DEMO():
     
     model = Net().to(device)
     model.quantize(1, 2, 2, 4)
-    model.load_state_dict(torch.load(('C:\\Users\\16432\\Desktop\\Workplace\\Python\\cnn_fixpoint\\ckpt\\1d_cnn_2bit_sdj_avgpool.pt'), map_location='cpu'))
+    model.load_state_dict(torch.load(('./Analog_Memory_DEMO/cnn_fixpoint/ckpt/1d_cnn_2bit_sdj_avgpool.pt'), map_location='cpu'))
     count = 0
     pos = 0
     neg = 0
@@ -1312,9 +1312,13 @@ def CNN_DEMO():
         plt.title('test_data')
         plt.show()
         """
-        DeployPlus = q_plus[0:2].detach().numpy()
-        DeployMinusHigh = q_minus_high[0:2].detach().numpy()
-        DeployMinusLow = q_minus_low[0:2].detach().numpy()
+        # DeployPlus = q_plus[0:2].detach().numpy()
+        # DeployMinusHigh = q_minus_high[0:2].detach().numpy()
+        # DeployMinusLow = q_minus_low[0:2].detach().numpy()
+        DeployPlus = q_plus.detach().numpy()
+        DeployMinusHigh = q_minus_high.detach().numpy()
+        DeployMinusLow = q_minus_low.detach().numpy()
+
         DeployPlusHigh = np.zeros(DeployPlus.shape)
         DeployList = [DeployPlusHigh, DeployMinusHigh, DeployPlus, DeployMinusLow]
         WeightList = []
@@ -1346,8 +1350,10 @@ def CNN_DEMO():
                     True_Result[batch, channel, index] += Hardware_Result[HardwareX, channel * 2] * 2 + Hardware_Result[HardwareX, channel * 2 + 1]
         True_Result = True_Result * 15
         OutputData = OutputData.detach().numpy()
-        print((OutputData[:, 0:2, :] - True_Result).min(), (OutputData[:, 0:2, :] - True_Result).max())
-        OutputData[:, 0:2, :] = True_Result
+        # print((OutputData[:, 0:2, :] - True_Result).min(), (OutputData[:, 0:2, :] - True_Result).max())
+        # OutputData[:, 0:2, :] = True_Result
+        print((OutputData - True_Result).min(), (OutputData - True_Result).max())
+        OutputData = True_Result
         OutputData = torch.tensor(OutputData, device=device)
         x = OutputData - bias
         x = x / 16
@@ -1458,13 +1464,6 @@ def train(model, device, train_loader, optimizer, epoch):
 
 
 def main():
-
-    # 2.5V (V_SILENCE) 1uA
-    # 2.1V (V_REF) 7uA
-    # -0.9V (OTA V_MINUS) 9.509mA
-    # 0.6V (V_SILENCE WRITE) 0
-    # 5V (VDD_5V) 27mA
-    # 3.3V (VDD_3.3V) 9mA
     # CNN_DEMO()
     Communication_test()
     # VAE_DEMO()
