@@ -28,7 +28,7 @@ import csv
 
 dataset_path = './Analog_Memory_DEMO/VAE_DEMO/datasets'
 
-# Fake analog buffer distribution for neural network training
+# Analog buffer distribution for neural network training
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 Prob = [[1.0, 0.0, 0.0, 0.0, ],
         [1.0, 0.0, 0.0, 0.0, ],

@@ -221,11 +221,9 @@ def main():
         SNRList[3].append(SNRSPIKE)
     x = Limit / grid * np.arange(1, grid + 1)
     SNR = np.array(SNRList).transpose()
-    # s = np.array([SNRList[0], SNRList[1], SNRList[3]]).transpose()
     data = pd.DataFrame(SNR, x, columns=["PAM", "PWM", "Quant PWM", "Spike"])
-    # data = pd.DataFrame(s, x, columns=["PAM", "PWM", "Spike"])
     sns.lineplot(data=data, palette="tab10", linewidth=2.5)
-    plt.axhline(15.201691738550627)
+    plt.axhline(15.201691738550627) # The experimentally tested SNR
     data.to_csv("SNR.csv")
     plt.savefig("SNR.pdf")
     plt.show()

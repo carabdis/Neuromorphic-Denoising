@@ -374,8 +374,8 @@ def VAE():
 
 
 def main():
-    # MLP_1DCNN()
-    VAE()
+    # MLP_1DCNN()   # Estimation of 1d-cnn demonstration
+    VAE()           # Estimation of VAE decoder demonstration
     return
 
 

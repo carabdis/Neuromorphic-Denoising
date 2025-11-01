@@ -12,3 +12,6 @@ This python file is the computation process of Fig.5b. It computes the number of
 
 ## Fig_Plot
 This python file provide the code for figure drawing in the article.
+
+## Data.csv
+This csv file conclude the logged writing results of memrisotr-based analog buffer

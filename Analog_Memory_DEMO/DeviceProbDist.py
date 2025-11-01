@@ -48,9 +48,7 @@ def Dist_Comp(AvailablePlace, StorePlace, SampleNum=1000):
                 LowerLimit = max(0, i - Sum - 15 * (2 - k))
             SampleList.append(i - Sum)
             np.random.shuffle(SampleList)
-            # SampleList = [15, 15, 15, 15]
             Data[i, j, :] = np.array(SampleList)
-    # print(Data.size())
     Result_Batch = np.zeros((61, SampleNum))
     ratio = 0
     monument = 0.01
@@ -63,8 +61,6 @@ def Dist_Comp(AvailablePlace, StorePlace, SampleNum=1000):
         if ratio > monument:
             monument = min(ratio + monument, 1)
         print(i, '/', 60)
-        # if i % 300 == 0:
-        #     time.sleep(1)
         Enable = int(2 ** GROUP - 1)
         Enable <<= GROUP
         Enable += int(2 ** COL)
@@ -99,7 +95,6 @@ def Dist_Comp(AvailablePlace, StorePlace, SampleNum=1000):
             for k in range(len(data_LIST)):
                 data_COMP = array('B', [COMPUTE_BYTE + int(k), abs(data_LIST[k])])
                 NotSuccess = Communication_Write(handle=handle, data=data_COMP, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
-            # print(Test_Result, file=fileA, end=' ')
             # Initialize Buffer
             NotSuccess= Write(handle, 1, Symbol, EnableSub, DEVICE_COMM, weight_addr_sub,
                                       MODE_BYTE, CHECK_BYTE, ADDR_BYTE_SUB, ENABLE_BYTE_SUB, MODE=[5, 4])
@@ -112,9 +107,6 @@ def Dist_Comp(AvailablePlace, StorePlace, SampleNum=1000):
             weight_addr >>= 1
             Symbol = (Symbol + 1) % 2
             HandShake(handle, DEVICE_COMM, Symbol)
-            # print("Set Buffer RRAM")
-            # time.sleep(1)
-            # os.system("pause")
             # Select Compute Mode
             Write_Message = array('B', [MODE_BYTE, COMPUTE_MODE])
             NotSuccess = Communication_Write(handle=handle, data=Write_Message, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
@@ -126,9 +118,6 @@ def Dist_Comp(AvailablePlace, StorePlace, SampleNum=1000):
             weight_addr >>= 1
             Symbol = (Symbol + 1) % 2
             HandShake(handle, DEVICE_COMM, Initial=Symbol)
-            # print("Computation Done")
-            # time.sleep(1)
-            # os.system("pause")
             # Select Buffer Read Mode
             Write_Message = array('B', [MODE_BYTE, STORE_READ_MODE])
             NotSuccess = Communication_Write(handle=handle, data=Write_Message, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
@@ -148,25 +137,13 @@ def Dist_Comp(AvailablePlace, StorePlace, SampleNum=1000):
             weight_addr >>= 1
             Symbol = (Symbol + 1) % 2
             HandShake(handle, DEVICE_COMM, Initial=Symbol)
-            # print("Read Out Result")
-            # time.sleep(1)
-            # os.system("pause")
             # Read Out Result
             NotSuccess = Communication_Write(handle=handle, data=result_addr, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_STOP)
             NotSuccess = Communication_Read(handle=handle, data=readin, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
-            # Result_Batch[j, int(i / GROUP_TOTAL / 2)] += Sign * np.clip(np.round(Test_Result / 15), 0, 3)
             print(readin[0])
             Result_Batch[i, j] = min(3, readin[0])
-            # print(Test_Result, min(3, readin[0]), file=fileA)
-            # print(Sign * readin[0], int(Test_Result / 15))
-            # Overall_Test += Sign * round(Test_Result / 15)
             Test_Result = 0
-            # os.system("pause")
-            # print(Result_Batch[j, int(i / GROUP / 2)], Overall_Test)
-            # return
-        # print(file=fileA)
     aa_close(handle)
-    # print(Result_Batch.shape)
     return Result_Batch
 
 
