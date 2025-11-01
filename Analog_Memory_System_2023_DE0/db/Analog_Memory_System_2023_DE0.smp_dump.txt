@@ -1,0 +1,38 @@
+
+State Machine - |Analog_Memory_System_2023_DE0|i2c_slave:i2c|i2c_ns
+Name i2c_ns.I2C_RD i2c_ns.I2C_WD i2c_ns.I2C_ACK2 i2c_ns.I2C_RADR i2c_ns.I2C_ACK i2c_ns.I2C_ADR i2c_ns.I2C_STR i2c_ns.I2C_IDLE i2c_ns.I2C_DACK 
+i2c_ns.I2C_IDLE 0 0 0 0 0 0 0 0 0 
+i2c_ns.I2C_STR 0 0 0 0 0 0 1 1 0 
+i2c_ns.I2C_ADR 0 0 0 0 0 1 0 1 0 
+i2c_ns.I2C_ACK 0 0 0 0 1 0 0 1 0 
+i2c_ns.I2C_RADR 0 0 0 1 0 0 0 1 0 
+i2c_ns.I2C_ACK2 0 0 1 0 0 0 0 1 0 
+i2c_ns.I2C_WD 0 1 0 0 0 0 0 1 0 
+i2c_ns.I2C_RD 1 0 0 0 0 0 0 1 0 
+i2c_ns.I2C_DACK 0 0 0 0 0 0 0 1 1 
+
+State Machine - |Analog_Memory_System_2023_DE0|i2c_slave:i2c|i2c_cs
+Name i2c_cs.I2C_RD i2c_cs.I2C_WD i2c_cs.I2C_ACK2 i2c_cs.I2C_RADR i2c_cs.I2C_ACK i2c_cs.I2C_ADR i2c_cs.I2C_STR i2c_cs.I2C_IDLE i2c_cs.I2C_DACK 
+i2c_cs.I2C_IDLE 0 0 0 0 0 0 0 0 0 
+i2c_cs.I2C_STR 0 0 0 0 0 0 1 1 0 
+i2c_cs.I2C_ADR 0 0 0 0 0 1 0 1 0 
+i2c_cs.I2C_ACK 0 0 0 0 1 0 0 1 0 
+i2c_cs.I2C_RADR 0 0 0 1 0 0 0 1 0 
+i2c_cs.I2C_ACK2 0 0 1 0 0 0 0 1 0 
+i2c_cs.I2C_WD 0 1 0 0 0 0 0 1 0 
+i2c_cs.I2C_RD 1 0 0 0 0 0 0 1 0 
+i2c_cs.I2C_DACK 0 0 0 0 0 0 0 1 1 
+
+State Machine - |Analog_Memory_System_2023_DE0|i2c_slave:i2c|isck_cs
+Name isck_cs.DB_0 isck_cs.DB_120 isck_cs.DB_021 isck_cs.DB_1 
+isck_cs.DB_1 0 0 0 0 
+isck_cs.DB_021 0 0 1 1 
+isck_cs.DB_120 0 1 0 1 
+isck_cs.DB_0 1 0 0 1 
+
+State Machine - |Analog_Memory_System_2023_DE0|i2c_slave:i2c|isda_cs
+Name isda_cs.DB_0 isda_cs.DB_120 isda_cs.DB_021 isda_cs.DB_1 
+isda_cs.DB_1 0 0 0 0 
+isda_cs.DB_021 0 0 1 1 
+isda_cs.DB_120 0 1 0 1 
+isda_cs.DB_0 1 0 0 1 

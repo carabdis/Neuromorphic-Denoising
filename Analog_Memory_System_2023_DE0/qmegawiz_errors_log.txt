@@ -1,0 +1,11 @@
+
+
+D:/intelFPGA/18.1/Analog_Memory_System_2023_DE0/PLL.v
+
+Sep 14 03PM:57:21>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted
+
+D:/intelFPGA/18.1/Analog_Memory_System_2023_DE0/PLL.v
+
+Sep 14 03PM:58:07>: Megafunction PLL Intel FPGA IP v18.1 is not listed in any 
+wizard.lst file in the specified library path(s).Wizard launch aborted

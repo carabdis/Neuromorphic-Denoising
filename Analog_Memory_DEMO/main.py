@@ -1381,21 +1381,6 @@ def CNN_DEMO():
     # print(q_data.size(), q_w.size(), OutputData.size())
     return
 
-def main():
-
-    # 2.5V (V_SILENCE) 1uA
-    # 2.1V (V_REF) 7uA
-    # -0.9V (OTA V_MINUS) 9.509mA
-    # 0.6V (V_SILENCE WRITE) 0
-    # 5V (VDD_5V) 27mA
-    # 3.3V (VDD_3.3V) 9mA
-    # CNN_DEMO()
-    Communication_test()
-    # VAE_DEMO()
-    # Write_Test(ENABLE_BYTE=0x01, ADDR_BYTE=0x07, FileNameA="ResC", FileNameB="ResD")
-    # WL_LIST_SUB, BL_LIST_SUB, _ = FindMatchGroup(FileNameA="ResC", FileNameB="ResD", GROUP=1)
-    return
-
 
 def train_VAE():
     encoder = Encoder(Input_Dim=x_dim, Hidden_Dim=hidden_dim, Hidden_Dim2=hidden_dim2,
@@ -1471,36 +1456,22 @@ def train(model, device, train_loader, optimizer, epoch):
             ))
     return
 
+
+def main():
+
+    # 2.5V (V_SILENCE) 1uA
+    # 2.1V (V_REF) 7uA
+    # -0.9V (OTA V_MINUS) 9.509mA
+    # 0.6V (V_SILENCE WRITE) 0
+    # 5V (VDD_5V) 27mA
+    # 3.3V (VDD_3.3V) 9mA
+    # CNN_DEMO()
+    Communication_test()
+    # VAE_DEMO()
+    # Write_Test(ENABLE_BYTE=0x01, ADDR_BYTE=0x07, FileNameA="ResC", FileNameB="ResD")
+    # WL_LIST_SUB, BL_LIST_SUB, _ = FindMatchGroup(FileNameA="ResC", FileNameB="ResD", GROUP=1)
+    return
+
+
 if __name__ == '__main__':
     main()
-    # train()
-
-# Hardware Deployed
-# TP, FP, TN, FN 0 1 31 0
-# accuracy 0.96875
-# Software
-# TP, FP, TN, FN 0 0 32 0
-# accuracy 1.0
-# Hardware Deployed
-# TP, FP, TN, FN 24 4 0 4
-# accuracy 0.75
-# Software
-# TP, FP, TN, FN 18 1 3 10
-# accuracy 0.65625
-
-# [21884437.  6794607.    64944.        0.]
-# 
-# Test Configuration
-# V_MINUS = -0.9 V
-# Common Source Amp for computaion = 0.6 V
-# VREF = 2.45
-# V_CHARGE = 2.75
-# V_SILENCE = 3.3
-# VCM = 0
-# VSET = 1.8
-# VRESET = 2.8 
-
-
-# Change PIN (2025.3.8)
-# B13->H10
-# H10->J17

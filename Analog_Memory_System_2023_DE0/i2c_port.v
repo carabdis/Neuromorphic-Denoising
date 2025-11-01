@@ -1,0 +1,483 @@
+module i2c_slave ( clk, rstn, I_DEV_ADR, isda, osda, isck,
+	// write into chip
+	reg00d, reg01d, reg02d, reg03d, reg04d, 
+	reg05d, reg06d, reg07d, reg08d, reg09d,
+	reg0ad, reg0bd,
+	//read from chip
+    ireg02d, ireg03d, ireg04d, ireg05d, ireg07d, ireg08d, ireg09d, ireg0ad, ireg0bd
+);
+	input	clk;
+	input	rstn;
+	input	[7:1]	I_DEV_ADR;	// Device address
+	input	isda;
+	output	reg osda;
+	input	isck;
+	// write into chip
+	output	reg[7:0] reg00d,reg01d,reg02d,reg03d,reg04d,reg05d,reg06d,reg07d, reg08d, reg09d, reg0ad, reg0bd;
+	// read from chip
+	input [7:0] ireg02d, ireg03d, ireg04d, ireg05d, ireg07d, ireg08d, ireg09d, ireg0ad, ireg0bd;
+
+	// Initial value define
+	parameter	INI00D = 8'h21;
+	parameter	INI01D = 8'h00;
+	parameter	INI02D = 8'hff;
+	parameter	INI03D = 8'hff;
+	parameter	INI04D = 8'hff;
+	parameter	INI05D = 8'hff;
+	parameter	INI06D = 8'h0e;
+	parameter	INI07D = 8'h00;
+	parameter	INI08D = 8'h00;
+	parameter	INI09D = 8'hff;
+	parameter	INI0AD = 8'hff;
+	parameter	INI0BD = 8'h00;
+
+	// do not touch FF ---
+	parameter	INIFFD = 8'h00;
+	// -------------------
+
+
+	parameter	DB_0    = 3'b100,	// State 0
+					DB_021  = 3'b101,	// 0 -> 1
+					DB_120  = 3'b110,	// 1 -> 0
+					DB_1    = 3'b111;	// State 1
+	reg [2:0]	isda_cs, isck_cs;
+	parameter 	SDA_TOP = 4'h2;	// Consecutive constant number
+	parameter 	SCK_TOP = 4'h2;	// Consecutive constant number
+	reg [3:0]	isda_cnt, isck_cnt;	// Consecutive constant value counter
+	reg [2:0]	isda_syn, isck_syn;	// meta-stability SCK/SDA
+	wire		sdai, scki;
+	reg		sdain, sckin;	// Debounce SDA/SCK
+
+	parameter  I2C_IDLE = 4'h0,
+				  I2C_STR  = 4'h1,
+				  I2C_ADR  = 4'h2,
+				  I2C_ACK  = 4'h3,	// I2C Address ACK
+				  I2C_RADR = 4'h4,	// Register Address phase
+				  I2C_ACK2 = 4'h5,	// Register Address ACK
+				  I2C_WD   = 4'h6,
+				  I2C_RD   = 4'h7,
+				  I2C_DACK = 4'h8;	// Register Data ACK
+	reg [3:0] i2c_cs, i2c_ns;
+	reg [29:0] long_cnt;	// For timeout
+	wire		sstr;	// Signal START
+	wire		sstp;	// Signal STOP
+	wire		sclkr;	// Signal SCK rising
+	wire		sclkf;	// Signal SCK falling
+	reg	[2:0]	bit_cnt;	// bit counter
+	reg	[2:0]	bit_cnt_dly;	// bit counter
+	reg		bit_dat_lat;	// Bit data latch pulse
+	reg		dev_adr_lat;	// Device address latch pulse
+	reg		reg_adr_lat;	// Register address latch pulse
+	reg		reg_dat_lat;	// Register write in data latch pulse
+	reg		mult_ph;	// Write/Read multiple flag
+	reg		mult_ph_prog;	// Multiple in progress
+	wire		read_ph;	// Phase : 0: Write, 1: Read
+	reg		reg_adr_add;	// Register address auto add
+	reg		ireg_acs_pul;	// Internal register access pulse
+	reg		ireg_access;
+	reg	[3:0]	read_byte_cnt;	// Count the current read byte from I2C master
+	wire		read_mult;	// Enable read multiple
+	wire	[3:0]	read_mult_byte;	// Multiple read bytes
+
+	// internal registers
+	reg [7:0]   regffd;
+	reg	[7:0]	dev_adr;	// dev_adr[0], 1: read out data phase
+	reg	[7:0]	reg_adr;	// regisrer address
+	reg	[7:0]	reg_wdata;	// write in data
+	reg	[7:0]	reg_rdata;	// read out data
+
+	//reg	[7:0]	mem_data[5:0];	// 64 * 8 = 512 bits memory space
+
+	// SCK, SDA signal re-sync to internal clock domain
+	assign	sdai = isda_syn[2];
+	assign	scki = isck_syn[2];
+
+	always @(posedge clk or negedge rstn)
+		if (!rstn)	begin 
+			isda_cs <= DB_1;
+			isck_cs <= DB_1;	
+			isda_syn <= 3'h7;
+			isck_syn <= 3'h7;
+			sdain <= 1'b1;
+			sckin <= 1'b1;
+			isda_cnt <= 4'h0;
+			isck_cnt <= 4'h0;	
+		end
+		else begin
+			isda_syn <= {isda_syn[1:0], isda};
+			isck_syn <= {isck_syn[1:0], isck};
+		case (isda_cs)
+			DB_0  : begin 
+				sdain <= 1'b0;
+				if (sdai) begin 
+					isda_cs <= DB_021;
+					isda_cnt <= 4'h0;
+				end
+			end
+			DB_021: begin sdain <= 1'b0;
+				if (sdai) begin
+					if (isda_cnt==SDA_TOP) begin 
+						isda_cs <= DB_1;
+					end
+					else begin 
+						isda_cnt <= isda_cnt + 4'h1; 
+					end	
+				end
+				else begin 
+					isda_cs <= DB_0; 
+				end
+			end
+			DB_1  : begin
+				sdain <= 1'b1;
+				if (!sdai) begin
+					isda_cs <= DB_120;
+					isda_cnt <= 4'h0;
+				end
+			end
+			DB_120: begin
+				sdain <= 1'b1;
+				if (sdai)
+					isda_cs <= DB_1;
+				else begin
+					if (isda_cnt==SDA_TOP) begin 
+						isda_cs <= DB_0;
+					end
+					else begin 
+						isda_cnt <= isda_cnt + 4'h1;
+					end
+				end
+			end
+		endcase
+		case (isck_cs)
+			DB_0  : begin
+				sckin <= 1'b0;
+				if (scki) begin
+					isck_cs <= DB_021;
+					isck_cnt <= 4'h0;
+				end
+			end
+			DB_021: begin
+				sckin <= 1'b0;
+				if (scki) begin
+					if (isck_cnt==SDA_TOP) begin
+						isck_cs <= DB_1;
+					end
+					else begin
+						isck_cnt <= isck_cnt + 4'h1;
+					end
+				end
+				else begin
+					isck_cs <= DB_0;
+				end
+			end
+			DB_1  : begin 
+				sckin <= 1'b1;
+				if (!scki) begin
+					isck_cs <= DB_120;
+					isck_cnt <= 4'h0;
+				end
+			end
+			DB_120: begin 
+				sckin <= 1'b1;
+				if (scki)
+					isck_cs <= DB_1;
+				else begin
+					if (isck_cnt==SDA_TOP) begin
+						isck_cs <= DB_0;
+					end
+					else begin
+						isck_cnt <= isck_cnt + 4'h1;
+					end
+				end
+			end
+		endcase
+	end
+
+	reg	sda_dly, sck_dly;
+	always @(posedge clk or negedge rstn) begin
+		if	(!rstn) begin
+			sda_dly <= 1'b1; 
+			sck_dly <= 1'b1;	
+		end
+		else begin 
+			sda_dly <= sdain;
+			sck_dly <= sckin;
+		end
+	end
+	
+	assign	sstr = sda_dly && sck_dly && !sdain;	// START event
+	assign	sstp = !sda_dly && sck_dly && sdain;	// STOP event
+	assign	sclkr = !sck_dly && sckin;		// Data latch event and counter proceed
+	assign	sclkf = sck_dly && !sckin;		// Data latch event and counter proceed
+
+	// I2C protocol handling
+	always @(posedge clk or negedge rstn) begin
+		if (!rstn)	begin 
+			i2c_cs <= I2C_IDLE;
+			ireg_access <= 1'b0;
+			ireg_acs_pul <= 1'b0;
+		end
+		else if (sstp)	begin
+			i2c_cs <= I2C_IDLE; 
+			mult_ph_prog <= mult_ph;
+		end
+		else if (sstr)	begin	
+			i2c_cs <= I2C_STR;
+		end		// Prevent dead lock
+		else begin
+			i2c_ns <= i2c_cs;
+			bit_dat_lat <= 1'b0;
+			dev_adr_lat <= 1'b0;
+			reg_adr_lat <= 1'b0;
+			reg_dat_lat <= 1'b0;
+			reg_adr_add <= 1'b0;
+			ireg_acs_pul<= 1'b0;
+			bit_cnt_dly <= bit_cnt;
+			ireg_access <= ireg_acs_pul;
+			case (i2c_cs)
+				I2C_IDLE : begin
+					if (sstr) 
+						i2c_cs <= I2C_STR;
+					else if (sclkf && mult_ph_prog) begin
+						reg_adr_add <= 1'b1;
+						if (read_ph)	
+							i2c_cs <= I2C_RD;
+						else begin
+							i2c_cs <= I2C_WD;
+						end	
+					end
+				end
+				I2C_STR: begin
+					read_byte_cnt <= 4'h0;
+					bit_cnt <= 3'h7;
+					mult_ph <= 1'b0;
+					mult_ph_prog <= 1'b0;
+					if (sstp)
+						i2c_cs <= I2C_IDLE;
+					else if (!sckin)
+						i2c_cs <= I2C_ADR;
+					end
+				I2C_ADR: if (sclkr) begin
+					read_byte_cnt <= 4'h0;
+					mult_ph <= 1'b0;
+					bit_cnt <= bit_cnt + 3'h7;
+					bit_dat_lat <= 1'b1;
+					if (~|bit_cnt)	begin
+						dev_adr_lat <= 1'b1;	
+						i2c_cs <= I2C_ACK;
+					end
+				end
+				I2C_ACK	 : if (sclkr) begin
+					bit_cnt <= 3'h7;
+					if (read_ph) begin
+						i2c_cs <= I2C_RD;
+						ireg_acs_pul <= 1'b1;
+					end
+					else begin
+						i2c_cs <= I2C_RADR;
+					end
+				end
+				I2C_RADR : if (sclkr) begin
+					bit_cnt <= bit_cnt + 3'h7;
+					bit_dat_lat <= 1'b1;
+					if (~|bit_cnt)	begin
+						reg_adr_lat <= 1'b1;
+						i2c_cs <= I2C_ACK2;
+					end
+				end
+				I2C_ACK2 : if (sclkr) begin
+					bit_cnt <= 3'h7;
+					i2c_cs <= I2C_WD;
+				end
+				I2C_WD: if (sclkr) begin
+					mult_ph <= 1'b1;
+					bit_cnt <= bit_cnt + 3'h7;
+					bit_dat_lat <= 1'b1;
+					if (~|bit_cnt)	begin
+						reg_dat_lat <= 1'b1;
+						ireg_acs_pul <= 1'b1;
+						if (mult_ph_prog)	
+							i2c_cs <= I2C_DACK;
+						else begin	
+							i2c_cs <= I2C_IDLE;
+						end
+					end
+				end
+				I2C_RD: if (sclkr) begin
+					mult_ph <= 1'b1;
+					bit_cnt <= bit_cnt + 3'h7;
+					bit_dat_lat <= 1'b1;
+					if (~|bit_cnt)	begin
+						reg_dat_lat <= 1'b1;
+						if (mult_ph_prog)	begin
+							i2c_cs <= I2C_DACK;
+							read_byte_cnt <= read_byte_cnt + 4'h1;
+						end
+						else begin	
+							i2c_cs <= I2C_IDLE;
+						end
+					end
+				end
+				I2C_DACK : if (sclkr) begin
+					reg_adr_add <= 1'b1;
+					if (read_ph) begin
+						i2c_cs <= I2C_RD;
+						ireg_acs_pul <= 1'b1;
+					end
+					else begin
+						i2c_cs <= I2C_WD;
+					end 
+				end
+			endcase
+		end
+	end
+
+	always @(posedge clk or negedge rstn) begin
+	if (!rstn)	osda <= 1'b1;
+	else if (sclkf) begin
+	case (i2c_cs)
+	default : osda <= 1'b1;
+	I2C_ACK : if (I_DEV_ADR==dev_adr[7:1])	osda <= 1'b0;
+	I2C_ACK2: osda <= 1'b0;
+	I2C_DACK: if (read_ph) begin osda <= !read_mult || (read_byte_cnt==read_mult_byte); end
+		else		osda <= 1'b0;
+	I2C_RD  : begin
+		case (bit_cnt)
+		3'h0	: osda <= reg_rdata[0];
+		3'h1	: osda <= reg_rdata[1];
+		3'h2	: osda <= reg_rdata[2];
+		3'h3	: osda <= reg_rdata[3];
+		3'h4	: osda <= reg_rdata[4];
+		3'h5	: osda <= reg_rdata[5];
+		3'h6	: osda <= reg_rdata[6];
+		3'h7	: osda <= reg_rdata[7];
+		endcase
+		end
+	endcase
+	end
+	end
+
+	// Internal register read/write handling
+	assign	read_ph = dev_adr[0];
+	always @(posedge clk or negedge rstn) begin
+	if (!rstn)	begin	dev_adr<='d0 ; reg_adr<='d0 ; reg_wdata<='d0; end
+	else begin
+	  if (i2c_ns==I2C_ADR) begin
+		 if (dev_adr_lat) dev_adr <= {dev_adr[7:1], sdain};
+		 else if (bit_dat_lat) begin
+			case (bit_cnt_dly)
+			default	: dev_adr[1] <= sdain;
+			3'h2	: dev_adr[2] <= sdain;
+			3'h3	: dev_adr[3] <= sdain;
+			3'h4	: dev_adr[4] <= sdain;
+			3'h5	: dev_adr[5] <= sdain;
+			3'h6	: dev_adr[6] <= sdain;
+			3'h7	: dev_adr[7] <= sdain;
+			endcase
+		 end
+	  end
+
+	  if (i2c_ns==I2C_RADR) begin
+		 if (reg_adr_lat) reg_adr <= {reg_adr[7:1], sdain};
+		 else if (bit_dat_lat) begin
+			case (bit_cnt_dly)
+			default	: reg_adr[1] <= sdain;
+			3'h2	: reg_adr[2] <= sdain;
+			3'h3	: reg_adr[3] <= sdain;
+			3'h4	: reg_adr[4] <= sdain;
+			3'h5	: reg_adr[5] <= sdain;
+			3'h6	: reg_adr[6] <= sdain;
+			3'h7	: reg_adr[7] <= sdain;
+			endcase
+		 end
+	  end
+	  else if (reg_adr_add)	begin reg_adr <= reg_adr + 8'h1;	end
+
+	  if (i2c_ns==I2C_WD) begin
+		 if (reg_dat_lat) reg_wdata <= {reg_wdata[7:1], sdain};
+		 else if (bit_dat_lat) begin
+			case (bit_cnt_dly)
+			default	: reg_wdata[1] <= sdain;
+			3'h2	: reg_wdata[2] <= sdain;
+			3'h3	: reg_wdata[3] <= sdain;
+			3'h4	: reg_wdata[4] <= sdain;
+			3'h5	: reg_wdata[5] <= sdain;
+			3'h6	: reg_wdata[6] <= sdain;
+			3'h7	: reg_wdata[7] <= sdain;
+			endcase
+		 end
+	  end
+	end
+	end
+
+
+	// FIFO
+	always @(posedge clk or negedge rstn) begin
+	if (!rstn)	begin
+			reg00d <= reg00d; 
+			reg01d <= reg01d;
+			reg02d <= INI02D; 
+			reg03d <= INI03D;
+			reg04d <= INI04D; 
+			reg05d <= INI05D; 
+			reg06d <= {reg06d[7:1], 1'b0}; 
+			reg07d <= reg07d; 
+			reg08d <= INI08D; 
+			reg09d <= reg09d; 
+			reg0ad <= reg0ad; 
+			reg0bd <= INI0BD; 
+			//do not touch FF---
+			regffd <= INIFFD; 
+			//------------------
+			reg_rdata <= 'd0 ;
+	end
+	else if (ireg_access) begin
+	  if (read_ph) begin
+	  case (reg_adr)
+	  8'h00	: reg_rdata <= reg00d;
+	  8'h01	: reg_rdata <= reg01d;
+	  8'h02	: reg_rdata <= ireg02d;
+	  8'h03	: reg_rdata <= ireg03d;
+	  8'h04	: reg_rdata <= ireg04d;
+	  8'h05	: reg_rdata <= ireg05d;
+	  8'h06	: reg_rdata <= reg06d;
+	  8'h07	: reg_rdata <= ireg07d;
+	  8'h08	: reg_rdata <= ireg08d;
+	  8'h09	: reg_rdata <= ireg09d;
+	  8'h0a	: reg_rdata <= ireg0ad;
+	  8'h0b	: reg_rdata <= ireg0bd;
+
+	//do not touch FF---
+	  8'hff	: reg_rdata <= regffd;
+	//------------------
+	  default: reg_rdata <= reg_rdata;
+	  endcase
+	  end	// end of read_ph
+	  else begin
+	  case (reg_adr)
+	  8'h00	: reg00d <= reg_wdata;
+	  8'h01	: reg01d <= reg_wdata;
+	  8'h02	: reg02d <= reg_wdata;
+	  8'h03	: reg03d <= reg_wdata;
+	  8'h04	: reg04d <= reg_wdata;
+	  8'h05	: reg05d <= reg_wdata;
+	  8'h06	: reg06d <= reg_wdata;
+	  8'h07	: reg07d <= reg_wdata;
+	  8'h08	: reg08d <= reg_wdata;
+	  8'h09	: reg09d <= reg_wdata;
+	  8'h0a	: reg0ad <= reg_wdata;
+	  8'h0b	: reg0bd <= reg_wdata;
+
+	  //do not touch FF---
+	  8'hff	: regffd <= reg_wdata;
+	  //------------------
+	  default:;
+	  endcase
+	  end
+	  end	// end of ireg_access
+	end
+
+	assign	read_mult = regffd[7];
+	assign	read_mult_byte = regffd[3:0];
+
+endmodule

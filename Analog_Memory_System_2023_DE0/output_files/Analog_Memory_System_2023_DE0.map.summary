@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Sun May 11 17:11:26 2025
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : Analog_Memory_System_2023_DE0
+Top-level Entity Name : Analog_Memory_System_2023_DE0
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 1503
+Total pins : 89
+Total virtual pins : 0
+Total block memory bits : 10,880
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1
+Total DLLs : 0

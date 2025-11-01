@@ -1,0 +1,313 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "EN_PCB",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL[0]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL[1]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL[2]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL[3]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_CTRL[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_CTRL[1]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_CTRL[2]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL_SUB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL_SUB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL_SUB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_CTRL_SUB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_CTRL_SUB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_CTRL_SUB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_CTRL_SUB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN[0]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN[1]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN[2]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN[3]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN_SUB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN_SUB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN_SUB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "COL_EN_SUB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN_SUB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN_SUB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN_SUB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "ROW_EN_SUB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_BUS_CHS[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_BUS_CHS[1]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_BUS_CHS[2]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_BUS_CHS[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SL_BUS_CHS[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_BUS_CHS_SUB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_BUS_CHS_SUB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "BL_BUS_CHS_SUB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "WL_BUS_CHS_SUB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SL_BUS_CHS_SUB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Reset",
+					"strict" : false
+				},
+				{
+					"name" : "WHIGH_CTRL",
+					"strict" : false
+				},
+				{
+					"name" : "WLOW_CTRL",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA_ENABLE",
+					"strict" : false
+				},
+				{
+					"name" : "Sense_Ctrl_SUB",
+					"strict" : false
+				},
+				{
+					"name" : "Reset_SUB",
+					"strict" : false
+				},
+				{
+					"name" : "CAP_CTRL_SUB",
+					"strict" : false
+				},
+				{
+					"name" : "GEN_CTRL_SUB",
+					"strict" : false
+				},
+				{
+					"name" : "WLOW_CTRL_SUB",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA_ENABLE_SUB",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_MODE[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_MODE[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_MODE[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_MODE[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_MODE[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_MODE[6]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_PFSM[0]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_PFSM[1]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_PFSM[2]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_PFSM[3]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_PFSM[4]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_PFSM[5]",
+					"strict" : false
+				},
+				{
+					"name" : "HEX_PFSM[6]",
+					"strict" : false
+				},
+				{
+					"name" : "DEBUG_OUT",
+					"strict" : false
+				},
+				{
+					"name" : "sda",
+					"strict" : false
+				},
+				{
+					"name" : "EN",
+					"strict" : false
+				},
+				{
+					"name" : "RST",
+					"strict" : false
+				},
+				{
+					"name" : "MODE[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DEBUG",
+					"strict" : false
+				},
+				{
+					"name" : "MODE[1]",
+					"strict" : false
+				},
+				{
+					"name" : "MODE[2]",
+					"strict" : false
+				},
+				{
+					"name" : "CLK_IN",
+					"strict" : false
+				},
+				{
+					"name" : "WL_SELECT",
+					"strict" : false
+				},
+				{
+					"name" : "DEBUG_IN",
+					"strict" : false
+				},
+				{
+					"name" : "isck",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

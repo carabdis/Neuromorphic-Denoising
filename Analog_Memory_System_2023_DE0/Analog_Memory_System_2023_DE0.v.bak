@@ -1,0 +1,29 @@
+module Analog_Memory_System_2023_DE0
+
+#(
+	// Parameter Declarations
+	parameter ROW = 32,
+	parameter ROW_BIT = 5,
+	parameter COL = 36,
+	parameter COL_BIT = 6
+)
+
+(
+	// Input Ports
+	input wire [ROW_BIT - 1:0] WL_START,
+	input wire [COL_BIT - 1:0] BL_START,
+	input wire [COL_BIT - 1:0] SL_START,
+	input wire DATA,
+	input wire MODE,
+	
+
+	// Output Ports
+	output reg [ROW_BIT - 1:0] WL_CTRL,
+	output reg [COL_BIT - 1:0] BL_CTRL,
+	output reg [COL_BIT - 1:0] SL_CTRL,
+	output reg DATA,
+);
+
+	// Module Item(s)
+
+endmodule
