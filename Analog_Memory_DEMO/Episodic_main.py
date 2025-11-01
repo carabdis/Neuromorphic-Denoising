@@ -33,7 +33,6 @@ def Parallel_Compute_Serial_Ctrl(Data, AvailablePlace, Weight, model, StorePlace
     DATA_BIT = 4
     GROUP = 4
     Parallelism = 4
-    InputChannel = 16
     DEVICE_COMM = 0x6C
     ENABLE_BYTE = 0x00
     ENABLE_BYTE_SUB = 0x01
@@ -54,10 +53,8 @@ def Parallel_Compute_Serial_Ctrl(Data, AvailablePlace, Weight, model, StorePlace
     print("Bitrate set to %d kHz" % bitrate)
     # Data Quantization
     Data = torch.clip(Round.apply((Data - model.encoder.conv1.InMin) / (model.encoder.conv1.InMax - model.encoder.conv1.InMin) * 15), 0, 15).numpy().astype(int)
-    # print(Data.size())
     Result_Batch = np.zeros((Data.shape[0], Result_Dim))
     Test_Result = 0
-    Overall_Test = 0
     Sign = 1
     ratio = 0
     monument = 0.01
@@ -89,7 +86,6 @@ def Parallel_Compute_Serial_Ctrl(Data, AvailablePlace, Weight, model, StorePlace
         weight_addr_sub = WL_SUB
         weight_addr_sub <<= COL_BIT
         weight_addr_sub += BL_SUB
-        Zero = True
         for j in range(Data.shape[0]):
             if count % 300 == 0:
                 time.sleep(10)
@@ -104,22 +100,11 @@ def Parallel_Compute_Serial_Ctrl(Data, AvailablePlace, Weight, model, StorePlace
                 data_TEMP += int(Data[j, Index * Parallelism + k] * Weight[Parallelism * i + k])
                 if k % 2 == 1:
                     data_LIST.append(data_TEMP)
-                    if Test_Result > 15:
-                        Zero = False
                     data_TEMP = 0
-            if Zero:
-                continue
-            Zero = True
-            # if CompDict.get(IndexString) != None and (RepeatDict.get(IndexString) < 3):
-            #     Result_Batch[j, int(i / GROUP_TOTAL / 2)] += Sign * CompDict[IndexString]
-            #     RepeatDict[IndexString] += 1
-            #     Test_Result = 0
-            #     continue
             count = count + 1
             for k in range(len(data_LIST)):
                 data_COMP = array('B', [COMPUTE_BYTE + int(k), abs(data_LIST[k])])
                 NotSuccess = Communication_Write(handle=handle, data=data_COMP, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
-            # print(Test_Result, file=fileA, end=' ')
             # Initialize Buffer
             NotSuccess= Write(handle, 1, Symbol, EnableSub, DEVICE_COMM, weight_addr_sub,
                                       MODE_BYTE, CHECK_BYTE, ADDR_BYTE_SUB, ENABLE_BYTE_SUB, MODE=[5, 4])
@@ -132,9 +117,6 @@ def Parallel_Compute_Serial_Ctrl(Data, AvailablePlace, Weight, model, StorePlace
             weight_addr >>= 1
             Symbol = (Symbol + 1) % 2
             HandShake(handle, DEVICE_COMM, Symbol)
-            # print("Set Buffer RRAM")
-            # time.sleep(1)
-            # os.system("pause")
             # Select Compute Mode
             Write_Message = array('B', [MODE_BYTE, COMPUTE_MODE])
             NotSuccess = Communication_Write(handle=handle, data=Write_Message, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
@@ -146,9 +128,6 @@ def Parallel_Compute_Serial_Ctrl(Data, AvailablePlace, Weight, model, StorePlace
             weight_addr >>= 1
             Symbol = (Symbol + 1) % 2
             HandShake(handle, DEVICE_COMM, Initial=Symbol)
-            # print("Computation Done")
-            # time.sleep(1)
-            # os.system("pause")
             # Select Buffer Read Mode
             Write_Message = array('B', [MODE_BYTE, STORE_READ_MODE])
             NotSuccess = Communication_Write(handle=handle, data=Write_Message, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
@@ -168,34 +147,21 @@ def Parallel_Compute_Serial_Ctrl(Data, AvailablePlace, Weight, model, StorePlace
             weight_addr >>= 1
             Symbol = (Symbol + 1) % 2
             HandShake(handle, DEVICE_COMM, Initial=Symbol)
-            # print("Read Out Result")
-            # time.sleep(1)
-            # os.system("pause")
-            # Read Out Result
             NotSuccess = Communication_Write(handle=handle, data=result_addr, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_STOP)
             NotSuccess = Communication_Read(handle=handle, data=readin, DEVICE=DEVICE_COMM, mode=AA_I2C_NO_FLAGS)
-            # Result_Batch[j, int(i / GROUP_TOTAL / 2)] += Sign * np.clip(np.round(Test_Result / 15), 0, 3)
             Result_Batch[j, int(i / GROUP_TOTAL / 2)] += Sign * min(3, readin[0])
             CompDict[IndexString] = min(3, readin[0])
             RepeatDict[IndexString] = 0
-            # print(Test_Result, min(3, readin[0]), file=fileA)
-            # print(Sign * readin[0], int(Test_Result / 15))
-            # Overall_Test += Sign * round(Test_Result / 15)
             Test_Result = 0
         if i % GROUP_TOTAL == GROUP_TOTAL - 1:
             Sign = -Sign
-            # print(Result_Batch[j, int(i / GROUP / 2)], Overall_Test)
-            # return
-        # print(file=fileA)
     aa_close(handle)
-    # print(Result_Batch.shape)
     return Result_Batch
 
 
 def VAE_DEMO():
-    model = torch.load("./MyModel/checkpoint_3425.ptr", map_location=torch.device("cpu"))
+    model = torch.load("./Analog_Memory_DEMO/MyModel/checkpoint_3425.ptr", map_location=torch.device("cpu"))
     w = torch.reshape(model.encoder.conv1.layer.weight, (model.encoder.conv1.layer.weight.size(0), -1))
-    weight_tensor = Sign.apply(w).detach()
     weight = Sign.apply(w).detach().numpy().transpose()
     DeployList = np.zeros((weight.shape[0], 2 * weight.shape[1]))
     weight = weight.transpose()
@@ -206,19 +172,16 @@ def VAE_DEMO():
             elif weight[j, i] == -1:
                 DeployList[i][2 * j + 1] = 1
     DeployWeightLog(DeployList)
-    # return
-    Parallelism = 4
     WeightList = []
     DataChannel = DeployList.shape[0]
     DeployChannel = DeployList.shape[1]
     for i in range(DeployChannel):
         for j in range(DataChannel):
             WeightList.append(DeployList[j][i])
-    # model.eval()
-    dataset = hpy.File("./data/3dshapes.h5", "r")
+    dataset = hpy.File("./Analog_Memory_DEMO/data/3dshapes.h5", "r")
     dataset_images = dataset["images"]
     dataset_labels = dataset["labels"]
-    IndexFile = open("./IndexFile.txt", "r")
+    IndexFile = open("./Analog_Memory_DEMO/IndexFile.txt", "r")
     Index = IndexFile.read().split('\n')[:-1]
     Index = [int(i) for i in Index]
     SampleNum = 1
@@ -228,13 +191,10 @@ def VAE_DEMO():
         train_images, test_images, train_labels, test_labels = train_test_split(dataset_images[int(Index):int(Index) + 20, :, :, :], dataset_labels[:20, :], random_state=42)
         test_ds = test_images[0:1, :, :, :]
         np.random.shuffle(test_ds)
-        # x_test_new = np.array([add_noise(image) for image in test_ds[0:20]])
         train_images = torch.tensor(np.transpose(train_images, (0, 3, 1, 2))).float()
         noisy_test_numpy = noise(test_ds / 255., noise_factor=0.1)
         test_tensor = torch.tensor(np.transpose(test_ds / 255, (0, 3, 1, 2))).float()
         noisy_test = torch.tensor(np.transpose(noisy_test_numpy, (0, 3, 1, 2))).float()
-        # noisy_test = torch.tensor(np.transpose(test_ds / 255., (0, 3, 1, 2))).float()
-        # noisy_test = noisy_test[0:1, :, :, :]
         origin, decoded_imgs, mean, var = model(noisy_test)
         loss_ori = loss_function(test_tensor, decoded_imgs, mean, var)
         if loss_ori > 3200:
@@ -242,10 +202,6 @@ def VAE_DEMO():
         print(Index)
         n = n + 1
         decoded_imgs_numpy = np.transpose(decoded_imgs.detach().numpy(), (0, 2, 3, 1))
-        # fig = display(noisy_test_numpy, decoded_imgs_numpy, title='Inputs and outputs for VAE', n=1)
-        # return
-        count = 1
-        batch_size = noisy_test.size(0)
         AvailablePlace = [2, 3, 3]
         StorePlace = [7, 1, 2, 1]
         with torch.no_grad():
@@ -262,9 +218,7 @@ def VAE_DEMO():
             HardwareResult = torch.tensor(HardwareResult)
             HardwareResult = HardwareResult.float()
             BatchData = torch.clip(Round.apply((BatchData - model.encoder.conv1.InMin) / (model.encoder.conv1.InMax - model.encoder.conv1.InMin) * 15), 0, 15)
-            # print(HardwareResult)
             Min = torch.ones(BatchData.size()) * model.encoder.conv1.InMin
-            # x = Input * (model.encoder.conv1.InMax - model.encoder.conv1.InMin)
             OutList = []
             w = torch.reshape(model.encoder.conv1.layer.weight, (model.encoder.conv1.layer.weight.size(0), -1))
             w = Sign.apply(w)
@@ -278,23 +232,20 @@ def VAE_DEMO():
                 y = torch.nn.functional.linear(BatchData[:, (i * 4):(i + 1) * 4], wMinus[:, (i * 4):(i + 1) * 4])
                 OutList.append(-y)
             for i in range(len(OutList)):
-                tensor = OutList[i]  # + (OutList[i] * torch.rand(OutList[i].size(), device=DEVICE) * 0.2).detach()
+                tensor = OutList[i]
                 LongTensor = torch.clip(Round.apply(tensor), -60, 60).long()
                 QuantTensor = torch.clip(Round.apply(tensor / 15), -3, 3)
                 RandTensor = torch.randint(0, 1000, QuantTensor.size(), device=DEVICE)
                 TempTensor = torch.reshape(ProbSample[torch.abs(LongTensor.flatten()), RandTensor.flatten()],
                                         QuantTensor.size())
                 AddTensor = TempTensor * torch.sign(QuantTensor) + QuantTensor - QuantTensor.detach()
-                # AddTensor = QuantTensor
-                x = (x + AddTensor  # * self.scale / 15
-                    * (model.encoder.conv1.InMax - model.encoder.conv1.InMin))
+                x = (x + AddTensor * (model.encoder.conv1.InMax - model.encoder.conv1.InMin))
             x[Index] = HardwareResult
             x = x + bias + model.encoder.conv1.layer.bias
             x = x.reshape((Batch_Size, -1, x.size(1)))
             dim_value = int(np.sqrt(x.size(1)))
             x = x.transpose(1, 2).reshape(x.size(0), x.size(2), dim_value, dim_value)
             x = x.float()
-            # x = model.encoder.conv1(model.encoder.Drop(noisy_test))
             x = model.encoder.bn1(x)
             x = model.encoder.act1(x)
 
@@ -319,10 +270,10 @@ def VAE_DEMO():
             x_imp = model.decoder(latent)
             loss = loss_function(test_tensor, x_imp, x_mean, x_var)
         hardware_imgs_numpy = np.transpose(x_imp.detach().numpy(), (0, 2, 3, 1))
-        File = open("./Results/Loss.txt", "a")
+        File = open("./Analog_Memory_DEMO/Results/Loss.txt", "a")
         print("loss" + str(n) + ":", loss_ori, loss)
         print("loss" + str(n) + ":", loss_ori, loss, file=File)
-        img = Image.open("./Results/testfig1.png")
+        img = Image.open("./Analog_Memory_DEMO/Results/testfig1.png")
         plt.figure(figsize=(12, 6))
         plt.imshow(img)
         plt.axis("off")
